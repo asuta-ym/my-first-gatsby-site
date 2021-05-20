@@ -2,16 +2,18 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import {
   container,
+  title,
   heading,
   navLinks,
   navLinkItem,
   navLinkText
 } from './layout.module.css'
 
-const Layout = ({ pageTitle, children }) => {
+const Layout = ({ sectionTitle, children }) => {
   return (
     <main className={container}>
-      <title>{pageTitle}</title>
+      <title>My Super Cool Blog</title>
+      <h1 className={title}>My Super Cool Blog</h1>
       <nav>
         <ul className={navLinks}>
           <li className={navLinkItem}>
@@ -24,9 +26,14 @@ const Layout = ({ pageTitle, children }) => {
               About
             </Link>
           </li>
+          <li className={navLinkItem}>
+            <Link to="/blog/blog" className={navLinkText}>
+              Blog
+            </Link>
+          </li>
         </ul>
       </nav>
-      <h1 className={heading}>{pageTitle}</h1>
+      <h1 className={heading}>{sectionTitle}</h1>
       {children}
     </main>
   )

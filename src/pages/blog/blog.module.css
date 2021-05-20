@@ -1,0 +1,9 @@
+.blog-nav-link {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.blog-nav-item {
+    border-bottom: 1px solid #000;
+    margin-bottom: 2rem;
+}
