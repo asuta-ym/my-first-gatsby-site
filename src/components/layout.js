@@ -1,39 +1,46 @@
 import * as React from 'react'
-import { Link } from 'gatsby'
-import {
-  container,
-  title,
-  heading,
-  navLinks,
-  navLinkItem,
-  navLinkText
-} from './layout.module.css'
+import { Link, useStaticQuery, graphql } from 'gatsby'
+import * as styles from './layout.module.css'
 
 const Layout = ({ sectionTitle, children }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }  
+  `)
   return (
-    <main className={container}>
-      <title>My Super Cool Blog</title>
-      <h1 className={title}>My Super Cool Blog</h1>
+    <main className={styles.container}>
+      <title>{sectionTitle} | {data.site.siteMetadata.title}</title>
+      <h1 className={styles.title}>{data.site.siteMetadata.title}</h1>
       <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
+        <ul className={styles.navLinks}>
+          <li className={styles.navLinkItem}>
+            <Link to="/" className={styles.navLinkText}>
               Home
             </Link>
           </li>
-          <li className={navLinkItem}>
-            <Link to="/about" className={navLinkText}>
+          <li className={styles.navLinkItem}>
+            <Link to="/about" className={styles.navLinkText}>
               About
             </Link>
           </li>
-          <li className={navLinkItem}>
-            <Link to="/blog/blog" className={navLinkText}>
+          <li className={styles.navLinkItem}>
+            <Link to="/blog/blog" className={styles.navLinkText}>
               Blog
+            </Link>
+          </li>
+          <li className={styles.navLinkItem}>
+            <Link to="/post" className={styles.navLinkText}>
+              Post
             </Link>
           </li>
         </ul>
       </nav>
-      <h1 className={heading}>{sectionTitle}</h1>
+      <h1 className={styles.heading}>{sectionTitle}</h1>
       {children}
     </main>
   )
