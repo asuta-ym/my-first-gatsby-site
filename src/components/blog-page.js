@@ -7,7 +7,7 @@ import {
 const BlogPage = ({ blogDate, children }) => {
     return (
         <div className={container}>
-            <p>Posted: March {blogDate}, 2021</p>
+            <p>Posted: March {blogDate}, 2021年</p>
             {children}
         </div>
     )
